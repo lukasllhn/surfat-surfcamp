@@ -79,8 +79,19 @@ section{padding-block:clamp(4rem,9vw,8rem)}
 .marquee .track span{margin:0 1.3rem;opacity:.9}.marquee .track b{color:var(--primary)}
 @keyframes scrollx{to{transform:translateX(-50%)}}
 
-/* ---------- TRIBE — editorial, NOT a hero ---------- */
-.tribe{background:var(--bg)}
+/* ---------- TRIBE — deep-ocean dark zone under the hero ---------- */
+.tribe{position:relative;overflow:hidden;color:var(--on-deep);
+  background:linear-gradient(180deg,#0f2a31 0%,#0b2030 45%,#061629 100%)}
+/* grain */
+.tribe::before{content:"";position:absolute;inset:0;z-index:0;pointer-events:none;opacity:.22;mix-blend-mode:soft-light;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+/* soft drifting ripple-light */
+.tribe::after{content:"";position:absolute;inset:0;z-index:0;pointer-events:none;mix-blend-mode:screen;opacity:.6;
+  background:radial-gradient(75% 45% at 50% -5%,rgba(63,147,166,.30),transparent 70%),radial-gradient(55% 30% at 25% 65%,rgba(45,110,130,.20),transparent 70%);
+  animation:drift 18s ease-in-out infinite alternate}
+.tribe>.container{position:relative;z-index:1}
+.tribe .eyebrow{color:#86d2de}
+.tribe .h2{color:#fff}
 .tribe__grid{display:grid;grid-template-columns:1.05fr .95fr;gap:clamp(2rem,5vw,4.5rem);align-items:center}
 .tribe__media{position:relative}
 .tribe__media .main{border-radius:var(--radius);overflow:hidden;aspect-ratio:5/4}
@@ -88,7 +99,7 @@ section{padding-block:clamp(4rem,9vw,8rem)}
 .tribe__media .badge{position:absolute;right:-14px;bottom:-14px;background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:.9rem 1.1rem;box-shadow:0 14px 30px rgba(20,48,56,.12);text-align:center}
 .tribe__media .badge b{font-family:var(--font-d);font-size:1.6rem;color:var(--primary);display:block;line-height:1}
 .tribe__media .badge span{font-size:.72rem;color:var(--ink-faint);text-transform:uppercase;letter-spacing:.08em}
-.tribe__body p{margin-top:1rem;color:var(--ink-soft);font-size:1.08rem}
+.tribe__body p{margin-top:1rem;color:var(--on-deep-soft);font-size:1.08rem}
 .tribe__body .btn{margin-top:1.6rem}
 
 /* ---------- VALUES (Surf At's own four pillars + their brand icons) ---------- */
