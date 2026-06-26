@@ -63,7 +63,7 @@ if (!reduce) {
       el.style.transform = `translateY(${(-off * 26).toFixed(1)}px) scale(1.12)`;
     });
     if (heroV) heroV.style.transform = `translateY(${-Math.min(scrollY * 0.18, 120).toFixed(1)}px)`;
-    if (oceanEl) oceanEl.style.transform = `translate3d(0,${(-scrollY * 0.1).toFixed(1)}px,0)`;
+    if (oceanEl) oceanEl.style.transform = `translate3d(0,${(-Math.min(scrollY * 0.08, 120)).toFixed(1)}px,0)`;
     ticking = false;
   };
   addEventListener('scroll', () => { if (!ticking) { ticking = true; requestAnimationFrame(update); } }, { passive: true });
