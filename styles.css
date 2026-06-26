@@ -103,7 +103,8 @@ section{padding-block:clamp(4rem,9vw,8rem)}
 .deep .eyebrow{color:#86d2de}
 .deep .h2{color:#fff}
 .deep .lead{color:var(--on-deep-soft)}
-@media(max-width:860px){.deep,.stats,.request,.foot{background-attachment:scroll}}
+/* mobile: the wide water photo cropped into a narrow column upscales badly — use a clean dark base; the veils above still give depth */
+@media(max-width:860px){.deep,.stats,.request,.foot{background-image:none;background-color:#0b2433}}
 
 /* ---------- TRIBE (transparent over the deep backdrop) ---------- */
 .tribe{position:relative;overflow:hidden}
@@ -250,4 +251,7 @@ img[data-parallax]{transform:scale(1.12)} /* base slack so parallax never shows 
   .hdr nav a:not(.cta)::after{display:none}.nav-toggle{display:block}
   .tribe__grid,.week__layout,.loc__grid,.req__grid{grid-template-columns:1fr}
   .week__sticky{position:static}.week__sticky .stage{aspect-ratio:16/10}
+  /* no sticky on mobile: kill the tall scroll-steps and the dim, show a compact timeline */
+  .step{min-height:auto;opacity:1;padding-block:.9rem}
+  .stats,.request{padding-block:clamp(3.5rem,12vw,6rem)}
 }
