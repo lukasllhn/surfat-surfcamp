@@ -79,19 +79,23 @@ section{padding-block:clamp(4rem,9vw,8rem)}
 .marquee .track span{margin:0 1.3rem;opacity:.9}.marquee .track b{color:var(--primary)}
 @keyframes scrollx{to{transform:translateX(-50%)}}
 
-/* ---------- TRIBE — deep-ocean dark zone under the hero ---------- */
-.tribe{position:relative;overflow:hidden;color:var(--on-deep);
-  background:linear-gradient(180deg,#0f2a31 0%,#0b2030 45%,#061629 100%)}
-/* grain */
-.tribe::before{content:"";position:absolute;inset:0;z-index:0;pointer-events:none;opacity:.22;mix-blend-mode:soft-light;
+/* ---------- DEEP — one continuous dark-ocean zone (tribe + values + coaches) ---------- */
+.deep{position:relative;isolation:isolate;color:var(--on-deep);
+  background:#08182a url("assets/source/deep-water.jpg") center top/cover;background-attachment:fixed}
+/* one long gradient: blend out of the hero -> reveal water -> deepen -> fade to cream at the very bottom */
+.deep::before{content:"";position:absolute;inset:0;z-index:0;pointer-events:none;background:
+  linear-gradient(180deg,#0e2a31 0%,rgba(11,32,40,.12) 9%,rgba(7,22,38,.5) 52%,rgba(6,17,31,.92) 90%,var(--bg) 100%)}
+/* film grain */
+.deep::after{content:"";position:absolute;inset:0;z-index:0;pointer-events:none;opacity:.16;mix-blend-mode:soft-light;
   background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
-/* soft drifting ripple-light */
-.tribe::after{content:"";position:absolute;inset:0;z-index:0;pointer-events:none;mix-blend-mode:screen;opacity:.6;
-  background:radial-gradient(75% 45% at 50% -5%,rgba(63,147,166,.30),transparent 70%),radial-gradient(55% 30% at 25% 65%,rgba(45,110,130,.20),transparent 70%);
-  animation:drift 18s ease-in-out infinite alternate}
-.tribe>.container{position:relative;z-index:1}
-.tribe .eyebrow{color:#86d2de}
-.tribe .h2{color:#fff}
+.deep>section{position:relative;z-index:1;background:transparent}
+.deep .eyebrow{color:#86d2de}
+.deep .h2{color:#fff}
+.deep .lead{color:var(--on-deep-soft)}
+@media(max-width:860px){.deep{background-attachment:scroll}}
+
+/* ---------- TRIBE (transparent over the deep backdrop) ---------- */
+.tribe{position:relative;overflow:hidden}
 .tribe__grid{display:grid;grid-template-columns:1.05fr .95fr;gap:clamp(2rem,5vw,4.5rem);align-items:center}
 .tribe__media{position:relative}
 .tribe__media .main{border-radius:var(--radius);overflow:hidden;aspect-ratio:5/4}
@@ -103,7 +107,14 @@ section{padding-block:clamp(4rem,9vw,8rem)}
 .tribe__body .btn{margin-top:1.6rem}
 
 /* ---------- VALUES (Surf At's own four pillars + their brand icons) ---------- */
-.values{background:var(--surface-2)}
+.values{background:transparent}
+.deep .val{background:rgba(255,255,255,.05);border-color:rgba(255,255,255,.14)}
+.deep .val:hover{box-shadow:0 18px 38px rgba(0,0,0,.32)}
+.deep .val .ico{background:rgba(255,255,255,.92)}   /* keep light so the black brand icons read */
+.deep .val h3{color:#fff}
+.deep .val p{color:var(--on-deep-soft)}
+.deep .founder b{color:#fff}
+.deep .founder span{color:var(--on-deep-soft)}
 .val-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:1.25rem;margin-top:2.8rem}
 .val{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:1.9rem 1.6rem;transition:transform .25s var(--eo-quint),box-shadow .25s}
 .val:hover{transform:translateY(-6px);box-shadow:0 18px 38px rgba(20,48,56,.12)}
