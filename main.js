@@ -27,6 +27,14 @@ if (reduce || !('IntersectionObserver' in window)) {
   revs.forEach(e => io.observe(e));
 }
 
+// hero video: fade in once it can render a frame (no poster/blank flash)
+const heroVid = document.querySelector('.hero__media video');
+if (heroVid) {
+  const showVid = () => heroVid.classList.add('ready');
+  if (reduce || heroVid.readyState >= 2) showVid();
+  else heroVid.addEventListener('loadeddata', showVid, { once: true });
+}
+
 // sticky "a week" — activate the step + matching image as it passes centre
 const steps = [...document.querySelectorAll('.step')];
 const wkImgs = [...document.querySelectorAll('.week__sticky .stage img')];
