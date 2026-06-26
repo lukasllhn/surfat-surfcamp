@@ -79,20 +79,31 @@ section{padding-block:clamp(4rem,9vw,8rem)}
 .marquee .track span{margin:0 1.3rem;opacity:.9}.marquee .track b{color:var(--primary)}
 @keyframes scrollx{to{transform:translateX(-50%)}}
 
-/* ---------- DEEP — one continuous dark-ocean zone (tribe + values + coaches) ---------- */
-.deep{position:relative;isolation:isolate;color:var(--on-deep);
-  background:#08182a url("assets/source/deep-water.jpg") center top/cover;background-attachment:fixed}
-/* one long gradient: blend out of the hero -> reveal water -> deepen -> fade to cream at the very bottom */
-.deep::before{content:"";position:absolute;inset:0;z-index:0;pointer-events:none;background:
-  linear-gradient(180deg,#0e2a31 0%,rgba(11,32,40,.12) 9%,rgba(7,22,38,.5) 52%,rgba(6,17,31,.92) 90%,var(--bg) 100%)}
-/* film grain */
-.deep::after{content:"";position:absolute;inset:0;z-index:0;pointer-events:none;opacity:.16;mix-blend-mode:soft-light;
+/* ---------- OCEAN — one continuous fixed water revealed through EVERY dark zone ---------- */
+.deep,.stats,.request,.foot{position:relative;isolation:isolate;color:var(--on-deep);
+  background:#08182a url("assets/source/deep-water.jpg") center/cover;background-attachment:fixed}
+/* shared film grain */
+.deep::after,.stats::after,.request::after,.foot::after{content:"";position:absolute;inset:0;z-index:0;pointer-events:none;opacity:.14;mix-blend-mode:soft-light;
   background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
-.deep>section{position:relative;z-index:1;background:transparent}
+/* per-zone veils — long edge-fades for spacious light<->dark blends */
+.deep::before{content:"";position:absolute;inset:0;z-index:0;pointer-events:none;background:
+  linear-gradient(180deg,#0e2a31 0%,rgba(9,24,40,.30) 14%,rgba(7,20,36,.55) 52%,rgba(7,18,32,.82) 78%,var(--bg) 100%)}
+.stats::before{content:"";position:absolute;inset:0;z-index:0;pointer-events:none;background:
+  linear-gradient(180deg,var(--bg) 0%,rgba(8,22,38,.55) 16%,rgba(8,22,38,.82) 32%,rgba(8,22,38,.82) 68%,rgba(8,22,38,.55) 84%,var(--bg) 100%)}
+.request::before{content:"";position:absolute;inset:0;z-index:0;pointer-events:none;background:
+  linear-gradient(180deg,var(--bg) 0%,rgba(8,22,38,.55) 18%,rgba(8,22,38,.86) 36%,rgba(8,22,38,.9) 100%)}
+.foot::before{content:"";position:absolute;inset:0;z-index:0;pointer-events:none;background:
+  linear-gradient(180deg,rgba(8,22,38,.9) 0%,rgba(4,12,24,.96) 100%)}
+/* content above water/veil/grain */
+.deep>section,.stats>.container,.request>.container,.foot>.container{position:relative;z-index:1}
+/* generous padding so the fades span lots of space */
+.deep{padding-bottom:clamp(4rem,9vw,8rem)}
+.stats,.request{padding-block:clamp(7rem,14vw,12rem)}
+.foot{padding-block:clamp(4.5rem,8vw,7rem)}
 .deep .eyebrow{color:#86d2de}
 .deep .h2{color:#fff}
 .deep .lead{color:var(--on-deep-soft)}
-@media(max-width:860px){.deep{background-attachment:scroll}}
+@media(max-width:860px){.deep,.stats,.request,.foot{background-attachment:scroll}}
 
 /* ---------- TRIBE (transparent over the deep backdrop) ---------- */
 .tribe{position:relative;overflow:hidden}
@@ -163,7 +174,7 @@ section{padding-block:clamp(4rem,9vw,8rem)}
 .hint{color:var(--ink-faint);font-size:.85rem;margin-top:.8rem}
 
 /* ---------- STATS ---------- */
-.stats{background:var(--deep);color:var(--on-deep)}
+/* .stats background now comes from the shared OCEAN rule */
 .stats .h2{color:#fff}.stats .lead{color:var(--on-deep-soft)}
 .stat-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:1.5rem;margin-top:3rem}
 .stat .big{font-family:var(--font-d);font-size:clamp(2.6rem,5vw,3.6rem);color:var(--primary);line-height:1}
@@ -193,7 +204,7 @@ section{padding-block:clamp(4rem,9vw,8rem)}
 .faq p{margin-top:.7rem;color:var(--ink-soft)}
 
 /* ---------- REQUEST ---------- */
-.request{background:var(--deep);color:var(--on-deep)}
+/* .request background now comes from the shared OCEAN rule */
 .request .h2{color:#fff}.request .lead{color:var(--on-deep-soft)}
 .req__grid{display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:start}
 .form{display:grid;gap:1rem;margin-top:1.5rem}
@@ -204,7 +215,7 @@ section{padding-block:clamp(4rem,9vw,8rem)}
 .form select option{color:#000}
 
 /* ---------- FOOTER ---------- */
-.foot{background:#0a2027;color:var(--on-deep-soft);padding-block:3rem}
+.foot{color:var(--on-deep-soft)}
 .foot .container{display:flex;flex-wrap:wrap;gap:2rem;justify-content:space-between}
 .foot a{color:var(--on-deep-soft);text-decoration:none}.foot a:hover{color:#fff}
 .foot .brand{font-family:var(--font-d);font-size:1.3rem;color:#fff;display:flex;gap:.5rem;align-items:center}
