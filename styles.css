@@ -19,7 +19,13 @@
 }
 *{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
-body{font-family:var(--font-b);background:var(--bg);color:var(--ink);line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+html{background:#0a1f2e}
+body{font-family:var(--font-b);background:transparent;color:var(--ink);line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+/* one continuous ocean backdrop behind every dark zone — scroll-parallax (main.js) + slow ambient drift */
+.ocean{position:fixed;inset:0;z-index:-2;overflow:hidden;background:#0a1f2e;will-change:transform}
+.ocean::before{content:"";position:absolute;inset:-1200px 0;background:url("assets/source/deep-water.jpg") center/cover;
+  animation:oceanDrift 32s ease-in-out infinite alternate;will-change:transform}
+@keyframes oceanDrift{from{transform:translate3d(0,0,0) scale(1.05)}to{transform:translate3d(0,-2.6%,0) scale(1.1)}}
 img{display:block;max-width:100%}
 a{color:inherit}
 .container{max-width:var(--container);margin:0 auto;padding-inline:var(--gutter)}
@@ -80,8 +86,7 @@ section{padding-block:clamp(4rem,9vw,8rem)}
 @keyframes scrollx{to{transform:translateX(-50%)}}
 
 /* ---------- OCEAN — one continuous fixed water revealed through EVERY dark zone ---------- */
-.deep,.stats,.request,.foot{position:relative;isolation:isolate;color:var(--on-deep);
-  background:#08182a url("assets/source/deep-water.jpg") center/cover;background-attachment:fixed}
+.deep,.stats,.request,.foot{position:relative;isolation:isolate;color:var(--on-deep);background:transparent}
 /* shared film grain */
 .deep::after,.stats::after,.request::after,.foot::after{content:"";position:absolute;inset:0;z-index:0;pointer-events:none;opacity:.14;mix-blend-mode:soft-light;
   background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
@@ -240,6 +245,7 @@ img[data-parallax]{transform:scale(1.12)} /* base slack so parallax never shows 
   .reveal,.reveal-scale{opacity:1!important;transform:none!important;transition:none!important}
   [data-parallax]{transform:none!important}
   .hero__media video{opacity:1!important}
+  .ocean::before{animation:none!important}
   html{scroll-behavior:auto}
 }
 
