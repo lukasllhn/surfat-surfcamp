@@ -87,7 +87,7 @@ section{padding-block:clamp(4rem,9vw,8rem)}
   background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
 /* per-zone veils — long edge-fades for spacious light<->dark blends */
 .deep::before{content:"";position:absolute;inset:0;z-index:0;pointer-events:none;background:
-  linear-gradient(180deg,#0e2a31 0%,rgba(9,24,40,.30) 14%,rgba(7,20,36,.55) 52%,rgba(7,18,32,.82) 78%,var(--bg) 100%)}
+  linear-gradient(180deg,#0e2a31 0%,rgba(9,24,40,.35) 12%,rgba(7,20,36,.6) 46%,rgba(7,18,32,.85) 80%,rgba(7,18,32,.85) 90%,var(--bg) 100%)}
 .stats::before{content:"";position:absolute;inset:0;z-index:0;pointer-events:none;background:
   linear-gradient(180deg,var(--bg) 0%,rgba(8,22,38,.55) 16%,rgba(8,22,38,.82) 32%,rgba(8,22,38,.82) 68%,rgba(8,22,38,.55) 84%,var(--bg) 100%)}
 .request::before{content:"";position:absolute;inset:0;z-index:0;pointer-events:none;background:
@@ -102,9 +102,9 @@ section{padding-block:clamp(4rem,9vw,8rem)}
 .foot{padding-block:clamp(4.5rem,8vw,7rem)}
 .deep .eyebrow{color:#86d2de}
 .deep .h2{color:#fff}
-.deep .lead{color:var(--on-deep-soft)}
-/* mobile: the wide water photo cropped into a narrow column upscales badly — use a clean dark base; the veils above still give depth */
-@media(max-width:860px){.deep,.stats,.request,.foot{background-image:none;background-color:#0b2433}}
+.deep .lead{color:#dbeaec;text-shadow:0 1px 14px rgba(4,14,24,.55)}
+/* mobile: portrait crop of the water — keeps resolution, far less zoom than the landscape slice */
+@media(max-width:860px){.deep,.stats,.request,.foot{background-image:url("assets/source/deep-water-mobile.jpg");background-attachment:scroll}}
 
 /* ---------- TRIBE (transparent over the deep backdrop) ---------- */
 .tribe{position:relative;overflow:hidden}
@@ -126,7 +126,7 @@ section{padding-block:clamp(4rem,9vw,8rem)}
 .deep .val h3{color:#fff}
 .deep .val p{color:var(--on-deep-soft)}
 .deep .founder b{color:#fff}
-.deep .founder span{color:var(--on-deep-soft)}
+.deep .founder span{color:#c4d8da;text-shadow:0 1px 8px rgba(4,14,24,.5)}
 .val-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:1.25rem;margin-top:2.8rem}
 .val{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:1.9rem 1.6rem;transition:transform .25s var(--eo-quint),box-shadow .25s}
 .val:hover{transform:translateY(-6px);box-shadow:0 18px 38px rgba(20,48,56,.12)}
