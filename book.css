@@ -1,0 +1,91 @@
+/* ============================================================
+   Surf At — booking flow (live demo on sample data)
+   Reuses tokens, fonts, buttons and cards from styles.css.
+   ============================================================ */
+.book-body{background:var(--bg);color:var(--ink);min-height:100vh}
+
+/* ---------- header ---------- */
+.book-hdr{position:sticky;top:0;z-index:40;display:flex;align-items:center;justify-content:space-between;
+  padding:.85rem clamp(1.25rem,5vw,3rem);background:rgba(244,248,247,.92);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+.book-hdr .brand{font-family:var(--font-d);font-size:1.25rem;text-decoration:none;color:var(--ink);display:flex;align-items:center;gap:.5rem}
+.book-hdr .brand img{height:28px}
+.book-hdr .back{font-size:.9rem;font-weight:600;text-decoration:none;color:var(--ink-soft)}
+.book-hdr .back:hover{color:var(--primary)}
+
+/* ---------- intro ---------- */
+.book-intro{max-width:var(--container);margin:0 auto;padding:clamp(2.2rem,5vw,3.4rem) var(--gutter) 0}
+.book-intro h1{font-family:var(--font-d);font-weight:400;font-size:clamp(2.4rem,5vw,3.5rem);line-height:1;margin:.5rem 0 .55rem}
+.book-intro .lead{color:var(--ink-soft);max-width:40rem;font-size:clamp(1.02rem,1.3vw,1.16rem)}
+.demo-note{margin-top:1.1rem;font-size:.83rem;line-height:1.5;color:var(--ink-faint);max-width:42rem;
+  padding-left:.9rem;border-left:3px solid var(--surface-2)}
+.demo-note b{color:var(--ink-soft);font-weight:600}
+
+/* ---------- grid ---------- */
+.book-grid{max-width:var(--container);margin:0 auto;
+  padding:clamp(1.8rem,4vw,2.6rem) var(--gutter) clamp(4rem,8vw,6rem);
+  display:grid;grid-template-columns:1.35fr .9fr;gap:clamp(1.5rem,3.5vw,3rem);align-items:start}
+
+/* ---------- availability ---------- */
+.avail{padding-block:0}   /* cancel the site-wide section padding so both columns top-align */
+.avail h2,.summary h2{font-family:var(--font-d);font-weight:400;font-size:1.7rem;margin-bottom:.15rem}
+.avail .sub{color:var(--ink-faint);font-size:.9rem;margin-bottom:1.4rem}
+.month-label{font-size:.74rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--primary);margin:1.7rem 0 .7rem}
+.month-label:first-child{margin-top:0}
+.week{display:flex;align-items:center;gap:1rem;width:100%;text-align:left;font:inherit;color:var(--ink);
+  background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:1rem 1.1rem;margin-bottom:.7rem;
+  cursor:pointer;transition:border-color .18s,background .18s,transform .12s}
+.week:hover:not(.full){border-color:var(--primary);transform:translateX(2px)}
+.week.sel{border-color:var(--primary);background:var(--surface-2);box-shadow:inset 3px 0 0 var(--primary)}
+.week.full{opacity:.5;cursor:not-allowed}
+.week__dates{flex:1;min-width:0}
+.week__dates b{font-size:1.02rem;font-weight:600;display:block}
+.week__cap{margin-top:.5rem;display:flex;align-items:center;gap:.65rem}
+.cap-track{height:6px;flex:1;max-width:150px;background:var(--surface-2);border-radius:99px;overflow:hidden}
+.week.sel .cap-track{background:#d5e5e3}
+.cap-fill{height:100%;background:var(--primary);border-radius:99px;transition:width .35s var(--eo-quint)}
+.cap-text{font-size:.8rem;color:var(--ink-faint);white-space:nowrap}
+.cap-text.low{color:var(--accent);font-weight:600}
+.week__price{text-align:right;white-space:nowrap}
+.week__price b{font-family:var(--font-d);font-size:1.32rem;color:var(--accent);display:block;line-height:1}
+.week__price span{font-size:.72rem;color:var(--ink-faint)}
+.week__full-tag{font-size:.82rem;font-weight:600;color:var(--ink-faint)}
+
+/* ---------- summary panel (sticky) ---------- */
+.summary{position:sticky;top:86px;scroll-margin-top:80px;background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:1.7rem 1.6rem}
+#weeks{scroll-margin-top:80px}
+.sum-empty{color:var(--ink-faint);font-size:.95rem;padding:.6rem 0 .2rem;line-height:1.55}
+.sum-line{display:flex;justify-content:space-between;align-items:center;gap:1rem;padding:.5rem 0;font-size:.95rem}
+.sum-line>span{color:var(--ink-soft)} .sum-line b{font-weight:600}
+.sum-div{height:1px;background:var(--line);margin:.55rem 0}
+.stepper{display:inline-flex;align-items:center;border:1px solid var(--line);border-radius:99px;overflow:hidden}
+.stepper button{width:38px;height:38px;border:0;background:var(--surface);color:var(--ink);font-size:1.25rem;cursor:pointer;line-height:1;font-family:inherit}
+.stepper button:hover:not(:disabled){background:var(--surface-2)}
+.stepper button:disabled{color:var(--ink-faint);cursor:not-allowed}
+.stepper .val{min-width:34px;text-align:center;font-weight:600}
+.field{margin:.85rem 0}
+.field label{display:block;font-size:.82rem;font-weight:600;margin-bottom:.35rem;color:var(--ink-soft)}
+.field input{width:100%;padding:.72rem .85rem;border:1px solid var(--line);border-radius:10px;background:var(--bg);color:var(--ink);font-family:inherit;font-size:.95rem}
+.field input:focus{outline:none;border-color:var(--primary)}
+.deposit{display:flex;justify-content:space-between;align-items:baseline;margin:.5rem 0 1rem}
+.deposit>span:first-child{color:var(--ink-soft);font-size:.95rem}
+.deposit .amt{font-family:var(--font-d);font-size:1.95rem;color:var(--ink);line-height:1}
+.summary .btn--solid{width:100%;text-align:center}
+.summary .btn:disabled{opacity:.5;cursor:not-allowed;box-shadow:none}
+.mini-note{font-size:.76rem;color:var(--ink-faint);margin-top:.8rem;text-align:center;line-height:1.5}
+
+/* ---------- confirmation ---------- */
+.conf{text-align:center}
+.conf svg{width:56px;height:56px;display:block;margin:0 auto .8rem}
+.conf h3{font-family:var(--font-d);font-weight:400;font-size:1.85rem;margin-bottom:.3rem}
+.conf .ref{font-size:.9rem;color:var(--ink-soft);margin-bottom:1.2rem}
+.conf .ref b{color:var(--ink);letter-spacing:.06em}
+.conf .recap{background:var(--surface-2);border-radius:12px;padding:.5rem 1rem;text-align:left;margin-bottom:1.2rem}
+.conf .recap .sum-line{padding:.45rem 0}
+.conf .pay{width:100%;text-align:center}
+.conf .again{margin-top:1rem;font-size:.86rem;color:var(--ink-soft);background:none;border:0;cursor:pointer;text-decoration:underline;font-family:inherit}
+.conf .again:hover{color:var(--primary)}
+
+@media(max-width:860px){
+  .book-grid{grid-template-columns:1fr}
+  .summary{position:static}
+}
