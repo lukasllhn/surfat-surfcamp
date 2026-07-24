@@ -6,7 +6,8 @@
    ============================================================ */
 (function () {
   var BEDS = 8;
-  var DEPOSIT = 76; // flat hold to reserve, counts toward the total
+  var DEP_PCT = 0.25; // deposit = 25% of the total, so it scales with booking size
+  var depOf = function (t) { return Math.round(t * DEP_PCT); };
   var STRIPE = "https://buy.stripe.com/test_5kQ6oJgCTezffn1a8K3VC00";
 
   // sample occupancy + pricing per upcoming week
@@ -62,6 +63,7 @@
     if (state.confirmed) {
       var wc = weeks[state.sel];
       var totalC = wc.price * state.guests;
+      var depC = depOf(totalC);
       panelEl.innerHTML =
         '<div class="conf">' +
           '<svg viewBox="0 0 52 52" aria-hidden="true"><circle cx="26" cy="26" r="23" fill="none" stroke="var(--primary)" stroke-width="3"/>' +
@@ -72,9 +74,9 @@
             '<div class="sum-line"><span>Week</span><b>' + fmt(wc.start) + " &rarr; " + fmt(wc.end) + "</b></div>" +
             '<div class="sum-line"><span>Guests</span><b>' + state.guests + "</b></div>" +
             '<div class="sum-line"><span>Total</span><b>&euro;' + totalC + "</b></div>" +
-            '<div class="sum-line"><span>Deposit due now</span><b>&euro;' + DEPOSIT + "</b></div>" +
+            '<div class="sum-line"><span>Deposit due now (25%)</span><b>&euro;' + depC + "</b></div>" +
           "</div>" +
-          '<a class="btn btn--solid pay" href="' + STRIPE + '" target="_blank" rel="noopener">Pay &euro;' + DEPOSIT + " deposit to secure</a>" +
+          '<a class="btn btn--solid pay" href="' + STRIPE + '" target="_blank" rel="noopener">Pay deposit securely</a>' +
           '<div><button class="again" id="again">Book another week</button></div>' +
         "</div>";
       return;
@@ -89,7 +91,8 @@
     var maxG = Math.min(left, BEDS);
     var g = state.guests;
     var total = w.price * g;
-    var balance = total - DEPOSIT;
+    var dep = depOf(total);
+    var balance = total - dep;
     var canBook = state.name.trim() && validEmail(state.email);
     panelEl.innerHTML =
       "<h2>Your booking</h2>" +
@@ -103,7 +106,7 @@
       '<div class="sum-div"></div>' +
       '<div class="field"><label for="bn">Full name</label><input id="bn" type="text" autocomplete="name" placeholder="Jordan Rivera" value="' + esc(state.name) + '"></div>' +
       '<div class="field"><label for="be">Email</label><input id="be" type="email" autocomplete="email" placeholder="you@email.com" value="' + esc(state.email) + '"></div>' +
-      '<div class="deposit"><span>Deposit to reserve</span><span class="amt">&euro;' + DEPOSIT + "</span></div>" +
+      '<div class="deposit"><span>Deposit to reserve (25%)</span><span class="amt">&euro;' + dep + "</span></div>" +
       '<button class="btn btn--solid" id="confirm"' + (canBook ? "" : " disabled") + ">Confirm reservation</button>" +
       '<p class="mini-note">Balance of &euro;' + balance + " due on arrival &middot; free cancellation up to 30 days before</p>";
 
