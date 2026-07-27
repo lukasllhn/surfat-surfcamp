@@ -4,39 +4,54 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Book your week · Surf At — Sintra</title>
-<meta name="description" content="Check live availability and reserve your surf week at Surf At, Sintra. Book and pay your deposit in a minute." />
+<meta name="description" content="Check live availability and reserve your surf week at Surf At, Sintra. Pick your week, see the price, pay a deposit." />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
 <link rel="preload" href="assets/fonts/DisplayArtThree.woff2" as="font" type="font/woff2" crossorigin />
 <link rel="stylesheet" href="styles.css" />
-<link rel="stylesheet" href="book.css" />
+<link rel="stylesheet" href="book.css?v=2" />
 </head>
 <body class="book-body">
 
-<header class="book-hdr">
-  <a class="brand" href="index.html"><img src="assets/source/logo.png" alt="Surf At" />Surf At</a>
-  <a class="back" href="index.html">&larr; Back to site</a>
-</header>
-
-<div class="book-intro">
-  <p class="eyebrow">Book your stay</p>
-  <h1>Reserve your surf week</h1>
-  <p class="lead">Pick a week, see exactly how many beds are left, and lock your spot with a small deposit. No messaging back and forth, no waiting for a reply.</p>
-  <p class="demo-note"><b>Live demo:</b> the availability below is sample data and resets when you refresh. In Surf At's real setup this syncs to their calendar, so it never double-books and a paid deposit holds the bed instantly.</p>
-</div>
+<!-- HEADER BAND — the site's own ocean surface, fading into the booking area -->
+<section class="book-top">
+  <div class="book-top__media"></div>
+  <div class="book-top__grain"></div>
+  <div class="book-top__inner">
+    <nav class="book-nav">
+      <a class="brand" href="index.html"><img src="assets/source/logo.png" alt="Surf At" />Surf At</a>
+      <a class="back" href="index.html">Back to site</a>
+    </nav>
+    <div class="book-top__head">
+      <h1>Reserve your<br>surf week</h1>
+      <p class="book-top__lead">Pick a week, see how many beds are left, and lock your spot with a deposit. No messaging back and forth, no waiting for a reply.</p>
+    </div>
+  </div>
+</section>
 
 <main class="book-grid">
   <section class="avail">
-    <h2>Choose your week</h2>
-    <p class="sub">Beachfront Surf Camp &middot; Saturday to Saturday &middot; 7 nights, 5 coached sessions</p>
+    <div class="avail__head">
+      <h2>Choose your week</h2>
+      <p class="sub">Beachfront Surf Camp &middot; Saturday to Saturday &middot; 7 nights, 5 coached sessions</p>
+    </div>
     <div id="weeks">
       <noscript><p class="sum-empty">This live booking demo needs JavaScript enabled. You can also <a href="index.html#request">request dates here</a>.</p></noscript>
     </div>
+    <p class="demo-note"><b>Live demo.</b> The availability here is sample data and resets when you refresh. In a real setup it syncs to the camp's calendar, so it never double-books and a paid deposit holds the bed instantly.</p>
   </section>
+
   <aside class="summary" id="panel"></aside>
 </main>
 
-<script src="book.js"></script>
+<footer class="book-foot">
+  <div class="book-foot__inner">
+    <a class="brand" href="index.html"><img src="assets/source/logo.png" alt="Surf At" />Surf At</a>
+    <p>Praia Grande &amp; Praia das Ma&ccedil;&atilde;s, Sintra &middot; since 2013</p>
+  </div>
+</footer>
+
+<script src="book.js?v=2"></script>
 </body>
 </html>

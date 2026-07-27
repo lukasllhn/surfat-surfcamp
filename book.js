@@ -101,7 +101,7 @@
       '<div class="sum-div"></div>' +
       '<div class="sum-line"><span>Guests</span>' +
         '<span class="stepper"><button id="minus"' + (g <= 1 ? " disabled" : "") + ">&ndash;</button>" +
-        '<span class="val">' + g + '</span><button id="plus"' + (g >= maxG ? " disabled" : "") + ">+</button></span></div>" +
+        '<span class="stepper__val">' + g + '</span><button id="plus"' + (g >= maxG ? " disabled" : "") + ">+</button></span></div>" +
       '<div class="sum-line"><span>&euro;' + w.price + " &times; " + g + " &middot; 7 nights</span><b>&euro;" + total + "</b></div>" +
       '<div class="sum-div"></div>' +
       '<div class="field"><label for="bn">Full name</label><input id="bn" type="text" autocomplete="name" placeholder="Jordan Rivera" value="' + esc(state.name) + '"></div>' +
